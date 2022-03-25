@@ -19,22 +19,18 @@ Diff(const Eigen::MatrixBase<Derived> & m0, const int n = 1, const int dim = 0)
     typename Derived::PlainObject m = m0;
     int rows = m.rows(), columns = m.cols();
 
-    if(dim == 1)
-    {
-        for(int i = 0; i < n ; i++)
-        {
+    if(dim == 1){
+        for(int i = 0; i < n ; i++){
             int col_counts = columns - i - 1;
-            m.leftCols(col_counts) = m.leftCols(col_counts) - m.block(0, 1, rows, col_counts);
+            m.leftCols(col_counts) = m.block(0, 1, rows, col_counts) - m.leftCols(col_counts);
         }
 
         return m.leftCols(columns - n);
     }
-    else
-    {
-        for(int i = 0; i < n ; i++)
-        {
+    else{
+        for(int i = 0; i < n ; i++){
             int row_counts = rows - i - 1;
-            m.topRows(row_counts) = m.topRows(row_counts) - m.block(1, 0, row_counts, columns);
+            m.topRows(row_counts) = m.block(1, 0, row_counts, columns) - m.topRows(row_counts);
         }
 
         return m.topRows(rows - n);
@@ -47,18 +43,14 @@ Diff(const Eigen::SparseMatrixBase<Derived> & m0, const int n = 1, const int dim
 {
     typename Derived::PlainObject m = m0;
 
-    if(dim == 1)
-    {
-        for(int i = 0; i < n; i++)
-        {
-            m = (m.leftCols(m.cols() - 1) - m.rightCols(m.cols() - 1)).eval();
+    if(dim == 1){
+        for(int i = 0; i < n; i++){
+            m = (m.rightCols(m.cols() - 1) - m.leftCols(m.cols() - 1)).eval();
         }
     }
-    else
-    {
-        for(int i = 0; i < n; i++)
-        {
-            m = (m.topRows(m.rows() - 1) - m.bottomRows(m.rows() - 1)).eval();
+    else{
+        for(int i = 0; i < n; i++){
+            m = (m.bottomRows(m.rows() - 1) - m.topRows(m.rows() - 1)).eval();
         }
     }
 

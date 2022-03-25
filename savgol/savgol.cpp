@@ -24,8 +24,7 @@ const Eigen::RowVectorXd CalcSavGolCoeff(const size_t window, const unsigned int
     Eigen::VectorXd v = Eigen::VectorXd::LinSpaced(window, -n, n);
     Eigen::MatrixXd x = Eigen::MatrixXd::Ones(window, polyorder + 1);
 
-    for(unsigned int i = 1; i <= polyorder; i++)
-    {
+    for(unsigned int i = 1; i <= polyorder; i++){
         x.col(i) = (x.col(i - 1).array() * v.array()).matrix();
     }
 
@@ -33,10 +32,8 @@ const Eigen::RowVectorXd CalcSavGolCoeff(const size_t window, const unsigned int
     Eigen::MatrixXd coeff_mat = (x.transpose() * x).inverse() * x.transpose();
 
     // 階乗の計算
-    if(derive > 0)
-    {
-        for(unsigned int i = 1; i <= derive; i++)
-        {
+    if(derive > 0){
+        for(unsigned int i = 1; i <= derive; i++){
             p *= i;
         }
     }

@@ -14,9 +14,8 @@ const Eigen::MatrixXd Diff(const Eigen::MatrixBase<Derived> & m, const unsigned 
 {
     Eigen::MatrixXd mr = m;
 
-    for(unsigned int i = 0; i < n; i++)
-    {
-        mr = (mr.topRows(mr.rows() - 1) - mr.bottomRows(mr.rows() - 1)).eval();
+    for(unsigned int i = 0; i < n; i++){
+        mr = (mr.bottomRows(mr.rows() - 1) - mr.topRows(mr.rows() - 1)).eval();
     }
 
     return mr;
@@ -27,9 +26,8 @@ const Eigen::SparseMatrix<double> Diff(const Eigen::SparseMatrixBase<Derived> & 
 {
     Eigen::SparseMatrix<double> mr = m;
 
-    for(unsigned int i = 0; i < n; i++)
-    {
-        mr = (mr.topRows(mr.rows() - 1) - mr.bottomRows(mr.rows() - 1)).eval();
+    for(unsigned int i = 0; i < n; i++){
+        mr = (mr.bottomRows(mr.rows() - 1) - mr.topRows(mr.rows() - 1)).eval();
     }
 
     return mr;
