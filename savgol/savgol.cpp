@@ -7,12 +7,13 @@
 // http://opensource.org/licenses/mit-license.php
 //
 
+#include <cmath>
 #include "savgol.h"
 
 //
 // Savitzky-Golay法の係数を求める
 //
-const Eigen::RowVectorXd CalcSavGolCoeff(const size_t window, const unsigned int polyorder, const unsigned derive, const double delta)
+const Eigen::RowVectorXd CalcSavGolCoeff(const size_t window, const unsigned int polyorder, const unsigned derive)
 {
     assert(window % 2 == 1);
     assert(window > polyorder && window > derive && polyorder > derive);
