@@ -18,6 +18,6 @@
 // window   : データ点数（2N+1点）
 // polyorder: 近似多項式の次数
 // derive   : 微分の次数
-const Eigen::RowVectorXd CalcSavGolCoeff(const size_t window, const unsigned int polyorder, const unsigned derive);
+const Eigen::RowVectorXd CalcSavGolCoeff(const size_t window, const unsigned int polyorder, const unsigned derive;
 
 #endif // __IZADORI_EIGEN_SAVGOL_H__
