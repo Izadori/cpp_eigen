@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 //
 
+#include <cmath>
 #include "savgol.h"
 
 //
