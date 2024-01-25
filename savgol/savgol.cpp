@@ -13,7 +13,9 @@
 //
 // Savitzky-Golay法の係数を求める
 //
-const Eigen::RowVectorXd CalcSavGolCoeff(const size_t window, const unsigned int polyorder, const unsigned derive)
+const Eigen::RowVectorXd CalcSavGolCoeff(
+    const size_t window, const unsigned int polyorder, const unsigned derive, const double delta
+)
 {
     assert(window % 2 == 1);
     assert(window > polyorder && window > derive && polyorder > derive);
@@ -37,6 +39,7 @@ const Eigen::RowVectorXd CalcSavGolCoeff(const size_t window, const unsigned int
         for(unsigned int i = 1; i <= derive; i++){
             p *= i;
         }
+        p /= std::pow(delta, derive);
     }
 
     return coeff_mat.row(derive) * p;
