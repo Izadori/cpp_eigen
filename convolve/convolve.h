@@ -10,6 +10,7 @@
 #ifndef __IZADORI_EIGEN_CONVOLVE_H__
 #define __IZADORI_EIGEN_CONVOLVE_H__
 
+#include <algorithm>
 #include <Eigen/Eigen>
 
 // 計算モード
