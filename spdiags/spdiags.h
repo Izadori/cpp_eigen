@@ -10,8 +10,9 @@
 #ifndef __IZADORI_EIGEN_SPDIAGS_H__
 #define __IZADORI_EIGEN_SPDIAGS_H__
 
-#include <stdexcept>
+#include <algorithm>
 #include <initializer_list>
+#include <stdexcept>
 #include <vector>
 #include <Eigen/Eigen>
 
