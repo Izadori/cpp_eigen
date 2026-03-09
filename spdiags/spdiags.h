@@ -38,15 +38,15 @@ Spdiags(const Eigen::MatrixBase<Derived> & data, const Eigen::VectorXi & diags, 
 	Eigen::SparseMatrix<Scalar> a;
 	std::vector<T> triplets;
 
-	row_size = (m <= 0) ? data.rows() : m;
-	column_size = (n <= 0) ? data.cols() : n;
+	row_size = (m <= 0) ? (int)data.rows() : m;
+	column_size = (n <= 0) ? (int)data.cols() : n;
 
 	a.resize(row_size, column_size);
 	triplets.resize(row_size * diags.size());
 
 	for (int k = 0; k < diags.size(); k++) {
 		int start_index = std::max(0, diags(k));
-		int end_index = std::min(data.cols(), column_size);
+		int end_index = std::min((int)data.cols(), column_size);
 
 		for(int i = start_index; i < end_index; i++) {
 			if(i - diags(k) < row_size && i < column_size) {
