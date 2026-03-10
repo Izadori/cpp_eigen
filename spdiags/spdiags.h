@@ -1,5 +1,5 @@
 //
-// convolve.h
+// spdiags.h
 //
 // Copyright (c) 2026 Izadori
 //
